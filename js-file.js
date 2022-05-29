@@ -30,3 +30,7 @@ function operate(operator, a, b) {
     divide(a, b);
   }
 }
+
+const calcDisplay = document.querySelector(".display");
+const number = document.querySelectorAll(".number");
+const operation = document.querySelectorAll(".operation");
