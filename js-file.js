@@ -1,6 +1,5 @@
 //Add two number inputs
 function add(a, b) {
-  console.log(a + b);
   return a + b;
 }
 
@@ -61,7 +60,7 @@ operations.forEach((operation) => {
   operation.addEventListener("click", () => {
     if (afterOperator) {
       calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
-      equation[0] = operation.textContent;
+      equation = [operation.textContent, calcDisplay.textContent, ""];
     } else {
       afterOperator = 1;
       equation[0] = operation.textContent;
@@ -76,21 +75,6 @@ clear.addEventListener("click", () => {
 
 equals.addEventListener("click", () => {
   calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
+  equation = ["", calcDisplay.textContent, ""];
+  afterOperator = 0;
 });
-
-// numbers.forEach((number) => {
-//   number.addEventListener("click", () => {
-//     if (calcDisplay.textContent == 0) {
-//       calcDisplay.textContent = "";
-//     }
-//     const currentNumber = calcDisplay.textContent;
-//     const nextNumber = number.textContent;
-//     calcDisplay.textContent = calcDisplay.textContent + nextNumber;
-//   });
-// });
-
-// operations.forEach((operation)=>{
-//     operation.addEventListener("click",()=>{
-
-//     })
-// })
