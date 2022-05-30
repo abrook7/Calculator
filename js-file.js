@@ -41,32 +41,36 @@ function operate(operator, a, b) {
   }
 }
 
-//query the display and buttons
+//query the display and all buttons
 const calcDisplay = document.querySelector(".display");
-const numbers = document.querySelectorAll(".number");
-const operations = document.querySelectorAll(".operation");
+const numbers = document.querySelectorAll(".number"); //queries all numbers (I treat . as a number)
+const operations = document.querySelectorAll(".operation"); //queries all math operations (+,-,*,/)
 const clear = document.querySelector(".clear");
 const equals = document.querySelector(".equals");
 const changeSign = document.querySelector(".change-sign");
 const percent = document.querySelector(".percent");
 
 calcDisplay.textContent = 0; //initial display number
-let afterOperator = 0;
-let afterEquals = 0;
-let afterDecimal = 0;
-let equation = ["", "", ""];
+let afterOperator = 0; //boolean tracking if an operator has been pressed
+let afterEquals = 0; //boolean tracking if the equals sign has been pressed
+let afterDecimal = 0; //boolean tracking if the decimal has been pressed
+let equation = ["", "", ""]; //initialize equation array
 
+//This Loops through each index of the numbers query
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
+    //clears first number
     if (afterEquals && !afterOperator) {
       equation[1] = "";
       afterEquals = 0;
     }
+    //stops multiple presses of '.' per number
     if (number.textContent == ".") {
       if (afterDecimal) {
         return;
       } else afterDecimal = 1;
     }
+    //saves and displays number depending on if it comes before or after an operator
     if (!afterOperator) {
       equation[1] += number.textContent;
       calcDisplay.textContent = equation[1];
@@ -82,10 +86,10 @@ operations.forEach((operation) => {
     if (afterOperator) {
       calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
       equation = [operation.textContent, calcDisplay.textContent, ""];
-      afterDecimal = 0;
+      afterDecimal = 0; //resets decimal
     } else {
-      afterOperator = 1;
-      afterDecimal = 0;
+      afterOperator = 1; //tracks operator usage
+      afterDecimal = 0; //resets decimal
       equation[0] = operation.textContent;
     }
   });
