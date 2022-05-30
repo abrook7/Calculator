@@ -43,10 +43,15 @@ const changeSign = document.querySelector(".change-sign");
 
 calcDisplay.textContent = 0; //initial display number
 let afterOperator = 0;
+let afterEquals = 0;
 let equation = ["", "", ""];
 
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
+    if (afterEquals && !afterOperator) {
+      equation[1] = "";
+      afterEquals = 0;
+    }
     if (!afterOperator) {
       equation[1] += number.textContent;
       calcDisplay.textContent = equation[1];
@@ -78,6 +83,7 @@ equals.addEventListener("click", () => {
   calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
   equation = ["", calcDisplay.textContent, ""];
   afterOperator = 0;
+  afterEquals = 1;
 });
 
 changeSign.addEventListener("click", () => {
