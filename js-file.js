@@ -77,6 +77,8 @@ operations.forEach((operation) => {
 clear.addEventListener("click", () => {
   equation = ["", "", ""];
   calcDisplay.textContent = 0;
+  afterOperator = 0;
+  afterEquals = 0;
 });
 
 equals.addEventListener("click", () => {
