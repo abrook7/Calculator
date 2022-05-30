@@ -116,3 +116,13 @@ changeSign.addEventListener("click", () => {
     calcDisplay.textContent = equation[1];
   }
 });
+
+percent.addEventListener("click", () => {
+  if (afterOperator) {
+    equation[2] *= 0.01;
+    calcDisplay.textContent = equation[2];
+  } else {
+    equation[1] *= 0.01;
+    calcDisplay.textContent = equation[1];
+  }
+});
