@@ -39,6 +39,7 @@ const numbers = document.querySelectorAll(".number");
 const operations = document.querySelectorAll(".operation");
 const clear = document.querySelector(".clear");
 const equals = document.querySelector(".equals");
+const changeSign = document.querySelector(".change-sign");
 
 calcDisplay.textContent = 0; //initial display number
 let afterOperator = 0;
@@ -77,4 +78,14 @@ equals.addEventListener("click", () => {
   calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
   equation = ["", calcDisplay.textContent, ""];
   afterOperator = 0;
+});
+
+changeSign.addEventListener("click", () => {
+  if (afterOperator) {
+    equation[2] *= -1;
+    calcDisplay.textContent = equation[2];
+  } else {
+    equation[1] *= -1;
+    calcDisplay.textContent = equation[1];
+  }
 });
