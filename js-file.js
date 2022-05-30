@@ -21,16 +21,20 @@ function divide(a, b) {
 
 //Uses one of the calculation functions based on the input operator
 function operate(operator, a, b) {
-  a = Number(a);
-  b = Number(b);
-  if (operator == "+") {
-    return add(a, b);
-  } else if (operator == "-") {
-    return subtract(a, b);
-  } else if (operator == "*") {
-    return multiply(a, b);
-  } else if (operator == "/") {
-    return divide(a, b);
+  if (operator == "" && b == "") {
+    return a;
+  } else {
+    a = Number(a);
+    b = Number(b);
+    if (operator == "+") {
+      return add(a, b);
+    } else if (operator == "-") {
+      return subtract(a, b);
+    } else if (operator == "*") {
+      return multiply(a, b);
+    } else if (operator == "/") {
+      return divide(a, b);
+    }
   }
 }
 
