@@ -49,6 +49,7 @@ const changeSign = document.querySelector(".change-sign");
 calcDisplay.textContent = 0; //initial display number
 let afterOperator = 0;
 let afterEquals = 0;
+let afterDecimal = 0;
 let equation = ["", "", ""];
 
 numbers.forEach((number) => {
@@ -56,6 +57,11 @@ numbers.forEach((number) => {
     if (afterEquals && !afterOperator) {
       equation[1] = "";
       afterEquals = 0;
+    }
+    if (number.textContent == ".") {
+      if (afterDecimal) {
+        return;
+      } else afterDecimal = 1;
     }
     if (!afterOperator) {
       equation[1] += number.textContent;
@@ -84,6 +90,7 @@ clear.addEventListener("click", () => {
   calcDisplay.textContent = 0;
   afterOperator = 0;
   afterEquals = 0;
+  afterDecimal = 0;
 });
 
 equals.addEventListener("click", () => {
@@ -91,6 +98,7 @@ equals.addEventListener("click", () => {
   equation = ["", calcDisplay.textContent, ""];
   afterOperator = 0;
   afterEquals = 1;
+  afterDecimal = 0;
 });
 
 changeSign.addEventListener("click", () => {
