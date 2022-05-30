@@ -15,7 +15,7 @@ function multiply(a, b) {
 
 //Divide two number inputs
 function divide(a, b) {
-  if (b == 0) return "ERROR";
+  if (b == 0) return "ERROR"; //return error if divide by 0
   return a / b;
 }
 
@@ -24,8 +24,11 @@ function operate(operator, a, b) {
   if (operator == "" && b == "") {
     return a;
   } else {
+    //change a & b to numbers so operations don't concatenate
     a = Number(a);
     b = Number(b);
+
+    //call the right method based on the input operator
     if (operator == "+") {
       return add(a, b);
     } else if (operator == "-") {
@@ -45,6 +48,7 @@ const operations = document.querySelectorAll(".operation");
 const clear = document.querySelector(".clear");
 const equals = document.querySelector(".equals");
 const changeSign = document.querySelector(".change-sign");
+const percent = document.querySelector(".percent");
 
 calcDisplay.textContent = 0; //initial display number
 let afterOperator = 0;
