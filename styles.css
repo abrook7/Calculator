@@ -69,6 +69,7 @@ p, button {
 
 .clear, .change-sign, .percent {
     background-color: #D4D4D2;
+    color: black;
 }
 
 .number {
