@@ -78,8 +78,10 @@ operations.forEach((operation) => {
     if (afterOperator) {
       calcDisplay.textContent = operate(equation[0], equation[1], equation[2]);
       equation = [operation.textContent, calcDisplay.textContent, ""];
+      afterDecimal = 0;
     } else {
       afterOperator = 1;
+      afterDecimal = 0;
       equation[0] = operation.textContent;
     }
   });
