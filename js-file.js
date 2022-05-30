@@ -15,6 +15,7 @@ function multiply(a, b) {
 
 //Divide two number inputs
 function divide(a, b) {
+  if (b == 0) return "ERROR";
   return a / b;
 }
 
